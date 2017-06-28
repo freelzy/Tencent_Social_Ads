@@ -117,7 +117,7 @@ def doTrick(data):
     data['maybe_2'] = data['maybe_2'].astype(np.int8)
     data['maybe_3'] = data['maybe_3'].astype(np.int8)
 
-    #时间差Trick
+    #时间差Trick，对clickTime处理成秒，分钟都尝试过，效果有些微差别，最后选择不进行处理
     temp = data.loc[:,['clickTime', 'creativeID', 'positionID', 'adID', 'appID', 'userID']].drop_duplicates(subset=subset, keep='first')
     # temp = temp.drop_duplicates(subset=subset, keep='first')
     temp.rename(columns={'clickTime': 'diffTime_first'}, inplace=True)
