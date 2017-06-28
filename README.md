@@ -17,7 +17,7 @@
 主要特征：
 ---
 * Trick特征：<br>
-通过观察原始数据是不难发现的,有很多只有clickTime和label不一样的重复数据，按时间排序发现重复数据如果转化，label一般标在头或尾，少部分在中间，在训练集上出现的情况在测试集上也会出现，所以标记这些位置后onehot，让模型去学习，再就是时间差特征，关于trick我比赛分享的[这篇文章](https://www.qcloud.com/community/article/401437)有较详细的说明.
+通过观察原始数据是不难发现的,有很多只有clickTime和label不一样的重复数据，按时间排序发现重复数据如果转化，label一般标在头或尾，少部分在中间，在训练集上出现的情况在测试集上也会出现，所以标记这些位置后onehot，让模型去学习，再就是时间差特征，关于trick我比赛分享的[这篇文章](https://www.qcloud.com/community/article/401437)有较详细的说明。比赛后期发现了几个和这个trick相类似的[文章1](https://github.com/wepe/O2O-Coupon-Usage-Forecast)和[文章2](https://www.kaggle.com/c/two-sigma-connect-rental-listing-inquiries/discussion/32116)，可以参考。
 
 * 统计特征：<br>
 原始特征主要三大类：广告特征、用户特征、位置特征，通过交叉组合算统计构造特征，由于机器限制，统计特征主要使用了转化率，丢掉了点击次数和转化次数。初赛利用了7天滑窗构造，决赛采用了周冠军分享的clickTime之前所有天算统计。三组合特征也来自周冠军分享的下载行为和网络条件限制，以及用户属性对app需求挖掘出。贝叶斯平滑user相关的特征特别废时间，初赛做过根据点击次数阈值来操作转化率，效果和平滑差不多但是阈值选择不太准。
