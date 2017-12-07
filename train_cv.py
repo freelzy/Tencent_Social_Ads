@@ -79,6 +79,10 @@ for i, (train, test) in enumerate(skf):
     print('mean:', preds.mean())
     res['prob_%s' % str(i)] = preds
 
+    
+#model._Booster.save_model('xgb.model')
+#model = xgb.Booster().load_model('xgb.model')
+
 #平均或者加权的方式有很多种，台大三傻的比赛分享里有一个利用sigmoid反函数来平均的方法效果不错
 now = datetime.datetime.now()
 now = now.strftime('%m-%d-%H-%M')
