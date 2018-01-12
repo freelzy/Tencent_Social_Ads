@@ -75,12 +75,12 @@ skf=list(StratifiedKFold(y_loc_train, n_folds=10, shuffle=True, random_state=102
 for i, (train, test) in enumerate(skf):
     print("Fold", i)
     model.fit(X_loc_train[train], y_loc_train[train], eval_metric='logloss',eval_set=[(X_loc_train[train], y_loc_train[train]), (X_loc_train[test], y_loc_train[test])],early_stopping_rounds=100)
-    preds= model.predict_proba(X_loc_test, num_iteration=model.best_iteration)[:, 1]
+    preds= model.predict_proba(X_loc_test, num_iteration=-1)[:, 1]
     print('mean:', preds.mean())
     res['prob_%s' % str(i)] = preds
 
     
-#model._Booster.save_model('xgb.model')
+#model._Booster.save_model('lgb.model')
 #model = xgb.Booster(model_file='xgb.model')
 
 #平均或者加权的方式有很多种，台大三傻的比赛分享里有一个利用sigmoid反函数来平均的方法效果不错
